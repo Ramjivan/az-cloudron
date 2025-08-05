@@ -104,6 +104,84 @@ resource "azurerm_network_security_group" "nsg" {
     destination_address_prefix = "*"
     destination_port_range     = "443"
   }
+
+  # Rule for SMTP (TCP port 25)
+  security_rule {
+    name                       = "allow_smtp"
+    priority                   = 105
+    direction                  = "Inbound"
+    access                     = "Allow"
+    protocol                   = "Tcp"
+    source_address_prefix      = "*"
+    source_port_range          = "*"
+    destination_address_prefix = "*"
+    destination_port_range     = "25"
+  }
+
+  # Rule for SMTPS (TCP port 465)
+  security_rule {
+    name                       = "allow_smtps"
+    priority                   = 106
+    direction                  = "Inbound"
+    access                     = "Allow"
+    protocol                   = "Tcp"
+    source_address_prefix      = "*"
+    source_port_range          = "*"
+    destination_address_prefix = "*"
+    destination_port_range     = "465"
+  }
+
+  # Rule for SMTP Submission (TCP port 587)
+  security_rule {
+    name                       = "allow_smtp_submission"
+    priority                   = 107
+    direction                  = "Inbound"
+    access                     = "Allow"
+    protocol                   = "Tcp"
+    source_address_prefix      = "*"
+    source_port_range          = "*"
+    destination_address_prefix = "*"
+    destination_port_range     = "587"
+  }
+
+  # Rule for IMAPS (TCP port 993)
+  security_rule {
+    name                       = "allow_imaps"
+    priority                   = 108
+    direction                  = "Inbound"
+    access                     = "Allow"
+    protocol                   = "Tcp"
+    source_address_prefix      = "*"
+    source_port_range          = "*"
+    destination_address_prefix = "*"
+    destination_port_range     = "993"
+  }
+
+  # Rule for Sieve (TCP port 4190)
+  security_rule {
+    name                       = "allow_sieve"
+    priority                   = 109
+    direction                  = "Inbound"
+    access                     = "Allow"
+    protocol                   = "Tcp"
+    source_address_prefix      = "*"
+    source_port_range          = "*"
+    destination_address_prefix = "*"
+    destination_port_range     = "4190"
+  }
+
+  # Rule for LDAPS (TCP port 636)
+  security_rule {
+    name                       = "allow_ldaps"
+    priority                   = 110
+    direction                  = "Inbound"
+    access                     = "Allow"
+    protocol                   = "Tcp"
+    source_address_prefix      = "*"
+    source_port_range          = "*"
+    destination_address_prefix = "*"
+    destination_port_range     = "636"
+  }
 }
 
 # Public IP address (IPv4)
