@@ -171,7 +171,6 @@ resource "azurerm_linux_virtual_machine" "vm" {
     caching                  = "ReadWrite"
     storage_account_type     = "Premium_LRS"
     disk_size_gb             = 500
-    security_encryption_type = "DiskWithVMGuestState"
   }
 
   source_image_reference {
