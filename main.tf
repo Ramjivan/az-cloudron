@@ -174,9 +174,9 @@ resource "azurerm_linux_virtual_machine" "vm" {
   }
 
   source_image_reference {
-    publisher = "canonical"
-    offer     = "0001-com-ubuntu-server-noble"
-    sku       = "24_04-lts-gen2"
+    publisher = "Canonical"
+    offer     = "ubuntu-24_04-lts"
+    sku       = "server"
     version   = "latest"
   }
 
