@@ -1,0 +1,27 @@
+#cloud-config
+package_upgrade: true
+packages:
+  - ufw
+
+runcmd:
+  # Enable UFW (Uncomplicated Firewall)
+  - echo "y" | ufw enable
+
+  # Open SSH port (TCP 22)
+  - ufw allow ssh
+
+  # Open HTTP ports (TCP 80 and UDP 80)
+  - ufw allow 80/tcp
+  - ufw allow 80/udp
+
+  # Open HTTPS ports (TCP 443 and UDP 443)
+  - ufw allow 443/tcp
+  - ufw allow 443/udp
+
+  # Cloudron setup commands
+  - wget https://cloudron.io/cloudron-setup
+  - chmod +x ./cloudron-setup
+  - ./cloudron-setup
+
+  - ufw status verbose
+  - echo "Cloud-init finished."
