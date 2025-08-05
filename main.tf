@@ -154,6 +154,12 @@ resource "azurerm_network_interface_security_group_association" "nic_nsg_assoc" 
   network_security_group_id = azurerm_network_security_group.nsg.id
 }
 
+# Data source to get the existing SSH key
+data "azurerm_ssh_public_key" "existing" {
+  name                = var.ssh_key_name
+  resource_group_name = azurerm_resource_group.rg.name
+}
+
 # Virtual Machine
 resource "azurerm_linux_virtual_machine" "vm" {
   name                = var.vm_name
@@ -180,12 +186,9 @@ resource "azurerm_linux_virtual_machine" "vm" {
     version   = "latest"
   }
 
-  # Pass the cloud-init script to the VM
-  custom_data = filebase64("${path.module}/cloud-init.yml")
-
   # Add the SSH public key for authentication
   admin_ssh_key {
     username   = "azureuser"
-    public_key = var.ssh_public_key
+    public_key = data.azurerm_ssh_public_key.existing.public_key
   }
 }

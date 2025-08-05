@@ -40,8 +40,8 @@ variable "vm_size" {
   type        = string
 }
 
-variable "ssh_public_key" {
-  description = "The SSH public key for authentication."
+variable "ssh_key_name" {
+  description = "The name of the existing SSH key in Azure."
   type        = string
 }
 
