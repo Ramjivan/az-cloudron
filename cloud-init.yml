@@ -1,0 +1,5 @@
+#cloud-config
+runcmd:
+  - wget https://cloudron.io/cloudron-setup.sh
+  - chmod +x cloudron-setup.sh
+  - ./cloudron-setup.sh
