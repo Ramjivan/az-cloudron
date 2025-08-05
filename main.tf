@@ -154,10 +154,12 @@ resource "azurerm_network_interface_security_group_association" "nic_nsg_assoc" 
   network_security_group_id = azurerm_network_security_group.nsg.id
 }
 
-# Data source to get the existing SSH key
-data "azurerm_ssh_public_key" "existing" {
+# Create SSH Public Key resource in Azure
+resource "azurerm_ssh_public_key" "new_key" {
   name                = var.ssh_key_name
   resource_group_name = azurerm_resource_group.rg.name
+  location            = azurerm_resource_group.rg.location
+  public_key          = var.ssh_public_key
 }
 
 # Virtual Machine
@@ -189,6 +191,6 @@ resource "azurerm_linux_virtual_machine" "vm" {
   # Add the SSH public key for authentication
   admin_ssh_key {
     username   = "azureuser"
-    public_key = data.azurerm_ssh_public_key.existing.public_key
+    public_key = azurerm_ssh_public_key.new_key.public_key
   }
 }

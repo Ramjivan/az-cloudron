@@ -41,7 +41,12 @@ variable "vm_size" {
 }
 
 variable "ssh_key_name" {
-  description = "The name of the existing SSH key in Azure."
+  description = "The name of the SSH key to create in Azure."
   type        = string
+  default     = "az-tf-key"
 }
 
+variable "ssh_public_key" {
+  description = "The public SSH key to be used for the VM."
+  type        = string
+}

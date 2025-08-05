@@ -5,5 +5,5 @@ location            = "centralindia"
 resource_group_name = "office-rg"
 vm_name             = "office-server-vm"
 vm_size             = "Standard_D4as_v5"
-ssh_key_name        = "az"
-
+ssh_key_name        = "az-office-key"
+ssh_public_key      = "ssh-rsa AAAA..."
