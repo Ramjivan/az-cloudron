@@ -1,5 +1,9 @@
 #cloud-config
+package_update: true
+packages:
+  - wget
 runcmd:
-  - wget https://cloudron.io/cloudron-setup.sh
-  - chmod +x cloudron-setup.sh
-  - ./cloudron-setup.sh
+  - wget https://cloudron.io/cloudron-setup
+  - chmod +x ./cloudron-setup
+  - ./cloudron-setup
+
