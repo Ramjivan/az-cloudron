@@ -272,5 +272,4 @@ resource "azurerm_linux_virtual_machine" "vm" {
     public_key = azurerm_ssh_public_key.new_key.public_key
   }
 
-  user_data = filebase64("${path.module}/cloud-init.yml")
 }
